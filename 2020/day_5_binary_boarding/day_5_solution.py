@@ -14,7 +14,7 @@ def calculate_seat_ids(row_column_list):
     return seat_ids
 
 def find_missing_seat_id(seat_ids):
-    for i in range(min(seat_ids), max(seat_ids)):
+    for i in range(min(seat_ids), max(seat_ids) + 1):
         if i in seat_ids:
             continue
         else:
