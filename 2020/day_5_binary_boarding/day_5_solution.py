@@ -1,16 +1,11 @@
 #!/usr/bin/env python3
 
-conversion_dict = {'F': '0', 'B': '1', 'R': '1', 'L': '0'}
 def calculate_seat_ids(row_column_list):
     seat_ids = []
     for (r, c) in row_column_list:
-        for k, v in conversion_dict.items():
-            r = r.replace(k, v)
-            c = c.replace(k, v)
-        r = int(r, 2)
-        c = int(c, 2)
-        seat_id = r * 8 + c
-        seat_ids.append(seat_id)
+        row = int(r.replace('F', '0').replace('B', '1'), 2)
+        col = int(c.replace('R', '1').replace('L', '0'), 2)
+        seat_ids.append(row * 8 + col)
     return seat_ids
 
 def find_missing_seat_id(seat_ids):
